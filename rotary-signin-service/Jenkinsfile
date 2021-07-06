@@ -1,0 +1,50 @@
+pipeline{
+    agent any
+    options {
+        timeout(time: 15, unit: 'MINUTES')
+    }
+    stages{
+        stage('check'){
+            steps{
+                sh 'chmod -R 777 .'
+                sh 'java -version'
+                sh './gradlew --version'
+            }
+        }
+
+        stage('clone'){
+            steps{
+                git branch: "master", credentialsId: 'jenkins',url: 'http://{GIT_SERVER}/{GROUP}/nwf-bi-aggregate.git'
+            }
+        }
+
+        stage('build'){
+            steps{
+                catchError {
+                    sh "chmod -R 777 ."
+                    sh './gradlew -Penv=dev :application:clean'
+                    sh './gradlew -Penv=dev :application:build'
+                    sh './gradlew -Penv=dev :application:jacocoTestReport'
+                }
+            }
+        }
+
+        stage('test report') {
+            steps {
+                publishHTML(target: [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'build/application/reports/tests/test', reportFiles: 'index.html', reportName: 'Test Report'])
+            }
+        }
+
+        stage('coverage report') {
+            steps {
+                publishHTML(target: [allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'build/application/reports/jacoco/test/html', reportFiles: 'index.html', reportName: 'Coverage Report'])
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'build/application/libs/application-1.0.0.war', fingerprint: true
+        }
+    }
+}

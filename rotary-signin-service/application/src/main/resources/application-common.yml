@@ -1,0 +1,10 @@
+# Actuator
+management:
+    endpoints:
+        web:
+            exposure:
+                include: health, info, metrics, threaddump
+# MyBatis-Plus
+mybatis-plus:
+    configuration:
+        jdbc-type-for-null: 'null'

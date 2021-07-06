@@ -1,0 +1,16 @@
+spring:
+    profiles: dev
+    datasource:
+        master:
+            driver-class-name: org.postgresql.Driver
+            jdbcUrl: jdbc:postgresql://ubuntu2004.wsl:26257/kgame?sslmode=disable
+            username: kgame
+            password:
+server:
+    port: 8080
+swagger:
+    enabled: true
+logging:
+    path: /var/log/app
+    level:
+        root: info
