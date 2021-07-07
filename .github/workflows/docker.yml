@@ -34,8 +34,7 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
       - uses: docker/build-push-action@v2
-        working-directory: ./rotary-signin-service
         with:
-          context: "build/application/docker"
+          context: "rotary-signin-service/build/application/docker"
           tags: "silmoontravis/rotary-signin-service:${{ env.TAG }}, silmoontravis/rotary-signin-service:latest"
           push: true
