@@ -44,5 +44,5 @@ jobs:
       - uses: docker/build-push-action@v2
         with:
           context: "rotary-signin-service/build/application/docker"
-          tags: "${{ env.REGISTRY }}/lowercase(${{ github.repository }})/rotary-signin-service:${{ env.TAG }}, ${{ env.REGISTRY }}/${{ github.repository }}/rotary-signin-service:latest"
+          tags: "${{ env.REGISTRY }}/${{ github.repository.lowercase }}/rotary-signin-service:${{ env.TAG }}, ${{ env.REGISTRY }}/${{ github.repository }}/rotary-signin-service:latest"
           push: true
