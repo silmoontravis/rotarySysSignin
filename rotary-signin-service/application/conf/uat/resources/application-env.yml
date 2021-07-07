@@ -1,9 +1,9 @@
 spring:
-    profiles: uat
+    profiles: dev
     datasource:
         master:
             driver-class-name: com.mysql.cj.jdbc.Driver
-            jdbcUrl: jdbc:mysql://${DB_IP:rotary-mysql}:${DB_PORT:3306}/${DB_NAME:smd-rotary}?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=UTC
+            jdbcUrl: jdbc:mysql://${DB_IP}:${DB_PORT:3306}/${DB_NAME:smd-rotary}?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=UTC
             username: ${DB_USER:root}
             password: ${DB_PASS}
 server:
