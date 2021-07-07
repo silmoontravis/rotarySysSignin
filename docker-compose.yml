@@ -36,6 +36,8 @@ services:
       - rotary-mysql
     restart: on-failure
 
+volumes:
+  mysql-data:
 
 networks:
   smd-proxy:

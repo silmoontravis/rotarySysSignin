@@ -9,4 +9,4 @@ RUN         chmod 777 -R /var/log/app
 USER        app
 COPY        package/dependency     /opt/app
 COPY        package/app            /opt/app
-CMD         ["/opt/app/bin/smd-rotary"]
+CMD         ["/opt/app/bin/application"]
