@@ -4,6 +4,9 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+defaults:
+  run:
+    working-directory: ./rotary-signin-service
 jobs:
   build:
     runs-on: ubuntu-latest
