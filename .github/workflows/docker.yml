@@ -22,7 +22,7 @@ jobs:
           path: ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
 
-      - run: ./gradlew -Penv=uat -p ext docker
+      - run: ./gradlew -Penv=uat docker
         working-directory: ./rotary-signin-service
 
       - run: echo "TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
