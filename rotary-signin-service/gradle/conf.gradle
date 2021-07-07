@@ -7,5 +7,6 @@ processResources {
         assert project.file("conf/${env}/resources").exists()
         inputs.dir project.file("conf/${env}/resources")
         from "conf/${env}/resources"
+        duplicatesStrategy 'include'
     }
 }
