@@ -101,4 +101,3 @@ external service to access RPT data source summed data
 
 - DRY
 - Explicit over implicit
-
