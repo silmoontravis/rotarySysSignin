@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloWorldController {
 
     @ApiOperation("Hello World")
-    @GetMapping
+    @GetMapping("/")
     public ApiResult helloWorld() {
         return new ApiResult(StatusCode.SUCCESS, "Hello World");
     }
