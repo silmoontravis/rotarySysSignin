@@ -34,7 +34,3 @@ jobs:
 
       - run: ./gradlew build -x test
         working-directory: ./rotary-signin-service
-
-      - uses: codecov/codecov-action@v1
-        with:
-          fail_ci_if_error: true
