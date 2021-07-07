@@ -67,7 +67,7 @@ public class MybatisConfig {
         Interceptor[] plugins = new Interceptor[1];
         plugins[0] = paginationInterceptor();
         sqlSessionFactory.setPlugins(plugins);
-
+        log.warn("Connecting : {}", masterJdbcUrl);
         return sqlSessionFactory.getObject();
     }
 
