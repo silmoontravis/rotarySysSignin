@@ -7,4 +7,5 @@ management:
 # MyBatis-Plus
 mybatis-plus:
     configuration:
-        jdbc-type-for-null: 'null'
+        map-underscore-to-camel-case: true
+        auto-mapping-behavior: full

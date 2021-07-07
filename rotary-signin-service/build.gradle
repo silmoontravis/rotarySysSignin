@@ -25,7 +25,7 @@ buildscript {
     dependencies {
         classpath "io.spring.gradle:dependency-management-plugin:${dependencyManagementPluginVersion}"
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-        classpath 'org.postgresql:postgresql:42.2.1'
+        classpath 'mysql:mysql-connector-java:8.0.25'
     }
 }
 /** DECLARE DEPENDENCIES */
@@ -97,7 +97,7 @@ project(':application') {
             mybatisPlus,
             servletApi,
             jSoup,
-            'org.postgresql:postgresql:42.2.1'
+            'mysql:mysql-connector-java:8.0.25'
         testImplementation(springBootTest) {
             exclude module: 'junit' // default is junit4, force to junit5
             exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

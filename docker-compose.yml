@@ -30,8 +30,9 @@ services:
     environment:
       DB_IP: rotary-mysql
       DB_PORT: 3306
-      DB_NAME: root
-      DB_USER: smdpass
+      DB_NAME: smd-rotary
+      DB_USER: root
+      DB_PASS: smdpass
     depends_on:
       - rotary-mysql
     restart: on-failure
