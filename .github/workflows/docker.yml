@@ -40,16 +40,13 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.ROTARY_SYS_SECRET }}
 
-      - id: string
-        uses: ASzc/change-string-case-action@v1
-        with:
-          string: ${{ github.repository }}
-
       - run: |
-          echo "${{ steps.string.outputs.lowercase }}"
+          echo "REPO_LC=${REPO,,}" >>${GITHUB_ENV}
+        env:
+          REPO: '${{ github.repository }}'
 
       - uses: docker/build-push-action@v2
         with:
           context: "rotary-signin-service/build/application/docker"
-          tags: "${{ env.REGISTRY }}/${{ steps.string.outputs.lowercase }}/rotary-signin-service:${{ env.TAG }}, ${{ env.REGISTRY }}/${{ github.repository }}/rotary-signin-service:latest"
+          tags: "${{ env.REGISTRY }}/${{ REPO_LC }}/rotary-signin-service:${{ env.TAG }}, ${{ env.REGISTRY }}/${{ github.repository }}/rotary-signin-service:latest"
           push: true
