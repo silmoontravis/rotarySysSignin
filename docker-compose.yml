@@ -21,18 +21,20 @@ services:
       MYSQL_ROOT_PASSWORD: smdpass
 
   rotary-signin-service:
-    container_name: rotary-signin-service
-    image: docker.pkg.github.com/silmoontravis/rotarysyssignin/service:latest
+    image: docker.pkg.github.com/silmoontravis/rotarysyssignin/service:0.0.9
     ports:
       - "8080:8080"
     networks:
       - smd-proxy
     environment:
+      active-profile: uat
       DB_IP: rotary-mysql
       DB_PORT: 3306
       DB_NAME: smd-rotary
       DB_USER: root
       DB_PASS: smdpass
+    links:
+      - rotary-mysql
     depends_on:
       - rotary-mysql
     restart: on-failure
