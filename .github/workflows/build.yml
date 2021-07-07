@@ -22,5 +22,5 @@ jobs:
         run: chmod +x gradlew
         working-directory: ./rotary-signin-service
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew build -x test
         working-directory: ./rotary-signin-service
