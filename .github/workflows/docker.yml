@@ -43,17 +43,16 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.ROTARY_SYS_SECRET }}
 
-      - name: Docker meta
-        id: meta
+      - id: meta-service
         uses: docker/metadata-action@v3
         with:
           images: |
-            ${{ env.REGISTRY }}/${{ github.repository }}
+            ${{ env.REGISTRY }}/${{ github.repository }}/service
           tags: |
-            type=raw,enable=true,pattern={{version}},value=latest,latest=true
+            type=raw,enable=true,pattern={{version}},latest=true
 
       - uses: docker/build-push-action@v2
         with:
           context: "rotary-signin-service/build/application/docker"
-          tags: ${{ steps.meta.outputs.tags }}, ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta-service.outputs.tags }}
           push: true
