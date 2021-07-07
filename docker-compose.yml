@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  rotary-mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    networks:
+      - smd-proxy
+    volumes:
+      - mysql-data:/var/lib/mysql
+    command: [
+        'mysqld',
+        '--innodb-buffer-pool-size=80M',
+        '--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_unicode_ci',
+        '--default-time-zone=+8:00',
+        '--lower-case-table-names=1'
+    ]
+    environment:
+      MYSQL_DATABASE: 'smd-rotary'
+      MYSQL_ROOT_PASSWORD: smdpass
+
+  rotary-signin-service:
+    container_name: rotary-signin-service
+    image: docker.pkg.github.com/silmoontravis/rotarysyssignin/service:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - smd-proxy
+    environment:
+      DB_IP: rotary-mysql
+      DB_PORT: 3306
+      DB_NAME: root
+      DB_USER: smdpass
+    depends_on:
+      - rotary-mysql
+    restart: on-failure
+
+
+networks:
+  smd-proxy:
+    name: smd-net

@@ -4,9 +4,7 @@ on:
     tags: [ "*.*.*" ]
 
 env:
-  # Use docker.io for Docker Hub if empty
   REGISTRY: docker.pkg.github.com
-  # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
@@ -34,15 +32,6 @@ jobs:
       - run: ./gradlew -Penv=uat docker
         working-directory: ./rotary-signin-service
 
-      - run: echo "TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-        working-directory: ./rotary-signin-service
-
-      - uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.ROTARY_SYS_SECRET }}
-
       - id: meta-service
         uses: docker/metadata-action@v3
         with:
@@ -52,6 +41,12 @@ jobs:
             type=semver,pattern={{version}}
           flavor: |
             latest=true
+
+      - uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.ROTARY_SYS_SECRET }}
 
       - uses: docker/build-push-action@v2
         with:
