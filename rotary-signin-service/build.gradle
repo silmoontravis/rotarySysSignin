@@ -2,24 +2,21 @@
 buildscript {
     ext {
         appVersion = '1.0.0'
-        dependencyManagementPluginVersion = '1.0.9.RELEASE'
+        dependencyManagementPluginVersion = '1.0.11.RELEASE'
         // https://github.com/spring-gradle-plugins/dependency-management-plugin/tags
-        springBootVersion = '2.2.6.RELEASE' // https://github.com/spring-projects/spring-boot/tags
+        springBootVersion = '2.3.12.RELEASE' // https://github.com/spring-projects/spring-boot/tags
         mybatisPlusVersion = '3.1.2' // customized, do not upgrade
         servletApiVersion = '4.0.1' // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
         validatorVersion = '6.1.4.Final' // https://github.com/hibernate/hibernate-validator/tags
-        lombokVersion = '1.18.12' // https://github.com/rzwitserloot/lombok/tags
-        commonLangVersion = '3.10' // http://commons.apache.org/proper/commons-lang/release-history.html
-        commonCodecVersion = '1.14' // https://commons.apache.org/proper/commons-codec/changes-report.html
+        lombokVersion = '1.18.20' // https://github.com/rzwitserloot/lombok/tags
+        commonLangVersion = '3.12.0' // https://commons.apache.org/proper/commons-lang/changes-report.html
+        commonCodecVersion = '1.15' // https://commons.apache.org/proper/commons-codec/changes-report.html
         springfoxVersion = '2.9.2' // https://github.com/springfox/springfox/tags
         swaggerVersion = '1.5.22' // customized, do not upgrade
         swaggerUIVersion = '1.9.3' // https://github.com/xiaoymin/swagger-bootstrap-ui/tags
-        apolloClientVersion = '1.6.0' // https://github.com/ctripcorp/apollo/tags
         jUnitVersion = '5.6.2' // https://github.com/junit-team/junit5/tags
-        springDocVersio = '1.3.3' // https://github.com/springdoc/springdoc-openapi/tags
-        xxlJobVersion = "2.0.2" // customized, do not upgrade
+        springDocVersio = '1.5.9' // https://github.com/springdoc/springdoc-openapi/tags
         jSoupVersion = '1.10.3' // customized, do not upgrade
-        appoloVersion = '1.1.1' // customized, do not upgrade
     }
     repositories {
         mavenLocal()
@@ -28,7 +25,6 @@ buildscript {
     dependencies {
         classpath "io.spring.gradle:dependency-management-plugin:${dependencyManagementPluginVersion}"
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-        classpath files("${rootDir}/lib/ojdbc7-12.1.0.2.jar") // customized
         classpath 'org.postgresql:postgresql:42.2.1'
     }
 }
@@ -48,7 +44,6 @@ def validator = "org.hibernate.validator:hibernate-validator:${validatorVersion}
 def lombok = "org.projectlombok:lombok:${lombokVersion}"
 def commonLang = "org.apache.commons:commons-lang3:${commonLangVersion}"
 def commonCodec = "commons-codec:commons-codec:${commonCodecVersion}"
-def apolloClient = "com.ctrip.framework.apollo:apollo-client:${apolloClientVersion}"
 def swagger2 = "io.springfox:springfox-swagger2:${springfoxVersion}"
 def swaggerAnnotation = "io.swagger:swagger-annotations:${swaggerVersion}"
 def swaggerModel = "io.swagger:swagger-models:${swaggerVersion}"
@@ -57,9 +52,7 @@ def swaggerKnifeUI = "com.github.xiaoymin:knife4j-spring-ui:${swaggerUIVersion}"
 def swaggerKnifeStarter = "com.github.xiaoymin:knife4j-spring-boot-starter:${swaggerUIVersion}" // if english version has been fixed, then use new one
 def jUnit = "org.junit.jupiter:junit-jupiter:${jUnitVersion}"
 // def springDoc = "org.springdoc:springdoc-openapi-ui:${springDocVersion}" TODO: For OAS3.0 if necessary
-def xxlJob = "com.xuxueli:xxl-job-core:${xxlJobVersion}"
 def jSoup = "org.jsoup:jsoup:${jSoupVersion}"
-def apollo = "com.ctrip.framework.apollo:apollo-client:${appoloVersion}"
 
 /** IMPLEMENT PROJECT SETTING */
 apply from: file("${rootDir}/gradle/project.gradle")
@@ -103,10 +96,7 @@ project(':application') {
             springBootTomcat,
             mybatisPlus,
             servletApi,
-            apolloClient,
-            xxlJob,
             jSoup,
-            apollo,
             'org.postgresql:postgresql:42.2.1'
         testImplementation(springBootTest) {
             exclude module: 'junit' // default is junit4, force to junit5

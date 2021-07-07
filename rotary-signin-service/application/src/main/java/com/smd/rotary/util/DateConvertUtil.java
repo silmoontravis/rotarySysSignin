@@ -28,7 +28,7 @@ public class DateConvertUtil {
 //    public static final int TIMEZONE_OFFSET = 0;
 
     public static List<Map<Date, Date>> convertDateRangeToDailyRange(String fromDate, String toDate) {
-        List<Map<Date, Date>> dailyRange = new ArrayList<>();
+        List<Map<Date, Date>> dailyRange = new ArrayList<>(3);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT);
         ZoneOffset zoneOffset = OffsetDateTime.now().getOffset();
         LocalDateTime from = LocalDateTime.parse(fromDate.contains(" ") ? fromDate : fromDate + START_OF_DAY, formatter);

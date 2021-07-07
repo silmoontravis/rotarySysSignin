@@ -1,8 +1,8 @@
 package com.smd.rotary.application.config.ds;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 动态数据源上下文
@@ -15,7 +15,7 @@ public class DynamicDataSourceContextHolder {
     /**
      * 数据源的 key集合，用于切换时判断数据源是否存在
      */
-    public static List<Object> dataSourceKeys = new ArrayList<>();
+    private static final Set<Object> DATA_SOURCE_KEYS = new HashSet<>();
 
     /**
      * 切换数据源
@@ -49,7 +49,7 @@ public class DynamicDataSourceContextHolder {
      * @return
      */
     public static boolean containDataSourceKey(String key) {
-        return dataSourceKeys.contains(key);
+        return DATA_SOURCE_KEYS.contains(key);
     }
 
     /**
@@ -59,7 +59,7 @@ public class DynamicDataSourceContextHolder {
      * @return
      */
     public static boolean addDataSourceKeys(Collection<? extends Object> keys) {
-        return dataSourceKeys.addAll(keys);
+        return DATA_SOURCE_KEYS.addAll(keys);
     }
 
     private static final ThreadLocal<String> CONTEXT_HOLDER = new ThreadLocal<String>() {

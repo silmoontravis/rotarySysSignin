@@ -3,7 +3,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath 'gradle.plugin.com.github.spotbugs.snom:spotbugs-gradle-plugin:4.0.0'
+        classpath 'gradle.plugin.com.github.spotbugs.snom:spotbugs-gradle-plugin:4.7.0'
     }
 }
 
@@ -17,8 +17,10 @@ subprojects {
 
     checkstyle {
         dependencies {
-            checkstyle 'com.puppycrawl.tools:checkstyle:8.32'
-            checkstyle 'com.github.sevntu-checkstyle:sevntu-checks:1.37.1'
+            checkstyle 'com.puppycrawl.tools:checkstyle:8.44'
+            // https://github.com/checkstyle/checkstyle/tags
+            checkstyle 'com.github.sevntu-checkstyle:sevntu-checks:1.40.0'
+            // https://github.com/sevntu-checkstyle/sevntu.checkstyle/tags
         }
 
         configFile = rootProject.file('gradle/check/checkstyle.xml')
@@ -45,7 +47,8 @@ subprojects {
     pmd {
         ruleSets = []
         ruleSetFiles = rootProject.files('gradle/check/pmd.xml')
-        toolVersion = '6.22.0'
+        toolVersion = '6.36.0'
+        // https://github.com/pmd/pmd/tags
         consoleOutput = true
         incrementalAnalysis = true
 
@@ -57,6 +60,7 @@ subprojects {
     spotbugs {
         dependencies {
             spotbugsPlugins 'com.mebigfatguy.sb-contrib:sb-contrib:7.4.7'
+            // https://github.com/mebigfatguy/fb-contrib/tags
         }
         sourceSets {
             // we define `main` sourceSet here, so SpotBugs Gradle Plugin generates `spotbugsMain` task
@@ -64,10 +68,11 @@ subprojects {
                 java.srcDirs = ['src/main/java']
             }
         }
-        
+
         reportLevel = 'low'
         includeFilter = rootProject.file('gradle/check/spotbugs.xml')
-        toolVersion = '4.0.1'
+        toolVersion = '4.3.0'
+        // https://github.com/spotbugs/spotbugs/tags
 
         def spotbugsReport = tasks.register('spotbugsReport') {
             group = 'verification'
@@ -91,7 +96,8 @@ subprojects {
     }
 
     jacoco {
-        toolVersion = '0.8.5'
+        toolVersion = '0.8.7'
+        // https://github.com/jacoco/jacoco/tags
 
         tasks.named('jacocoTestReport').configure {
             // to generate cross sub project report, run: gradlew test && gradlew jacocoTestReport
