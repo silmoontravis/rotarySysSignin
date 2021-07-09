@@ -20,7 +20,7 @@
 * 關閉指令為 docker-compose down
 * 如需完全清除, 指令為 docker-compose down -v
 
-## Windows docker 
+## Windows docker 事前準備作業
 
 * Windows 10 安裝 [WSL2](https://docs.microsoft.com/zh-tw/windows/wsl/install-win10)
 
