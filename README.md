@@ -20,6 +20,10 @@
 * 關閉指令為 docker-compose down
 * 如需完全清除, 指令為 docker-compose down -v
 
+## Windows docker 
+
+* Windows 10 安裝 [WSL2](https://docs.microsoft.com/zh-tw/windows/wsl/install-win10)
+
 ## 開發測試需求 & 指令
 
 * 安裝 [JDK11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
