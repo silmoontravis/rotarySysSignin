@@ -1,7 +1,5 @@
 # 基础镜像
 FROM nginx
-# author
-MAINTAINER ruoyi
 
 # 挂载目录
 VOLUME /home/app/projects/web

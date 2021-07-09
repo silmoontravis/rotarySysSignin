@@ -20,11 +20,11 @@ import java.time.LocalDate;
 public class DateRangeRequest {
 
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = AppConstants.TIME_ZONE)
-    @ApiParam(value = "开始时间", example = "2020-01-01")
+    @ApiParam(value = "开始时间", example = "2021-01-01")
     private LocalDate beginAt;
 
     @NotNull(message = "结束时间不可为空")
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = AppConstants.TIME_ZONE)
-    @ApiParam(value = "结束时间", example = "2021-01-01", required = true)
+    @ApiParam(value = "结束时间", example = "2022-01-01", required = true)
     private LocalDate endAt;
 }

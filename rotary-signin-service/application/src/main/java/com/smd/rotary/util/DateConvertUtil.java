@@ -68,6 +68,10 @@ public class DateConvertUtil {
         return Date.from(localDateTime.toInstant(ZoneId.systemDefault().getRules().getOffset(localDateTime)));
     }
 
+    public static Date convertDateFixTimeZoneSearch(LocalDateTime localDateTime) {
+        return Date.from(localDateTime.plusHours(8).toInstant(ZoneId.systemDefault().getRules().getOffset(localDateTime)));
+    }
+
     public static Date convertDate(Date dateTime) {
         return convertDate(parseDateTime(dateTime).toLocalDate().atStartOfDay());
     }

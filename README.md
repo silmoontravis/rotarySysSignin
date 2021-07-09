@@ -34,7 +34,6 @@
 * 安裝 [Docker-compose](https://docs.docker.com/compose/install/)
   | [中文](https://www.runoob.com/docker/docker-compose.html)
 * 執行 gradle docker (如果使用 IntelliJ, 有 Gradle Panel 可以直接點選 Tasks>distribution>docker)
-* 執行 docker-compose -f develop-compose.yml build
-* 執行 docker-compose -f develop-compose.yml up -d
+* 執行 docker-compose -f develop-compose.yml up --build -d
 * 關閉指令為 docker-compose -f develop-compose.yml down
 * 如需完全清除, 指令為 docker-compose -f develop-compose.yml down -v
