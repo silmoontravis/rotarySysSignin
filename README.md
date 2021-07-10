@@ -37,3 +37,9 @@
 * 執行 docker-compose -f develop-compose.yml up --build -d
 * 關閉指令為 docker-compose -f develop-compose.yml down
 * 如需完全清除, 指令為 docker-compose -f develop-compose.yml down -v
+
+## Docker WSL IP 自動抓取小工具
+
+* 先下載檔案[go-wsl2-host](https://github.com/shayne/go-wsl2-host)
+* 到他的relese版本下載
+* 放置C

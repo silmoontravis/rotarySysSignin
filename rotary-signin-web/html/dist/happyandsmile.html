@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Rotary Sign-in</title>
+    <title>Rotary Happy and Smile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js-bootstrap-css/0.1/typeaheadjs.min.css"/>
@@ -12,7 +12,7 @@
 <div class="container">
     <div class="text-center">
         <img src="static/img/logo.png" class="rounded" alt="logo">
-         <H1>台北環河扶輪社-例會簽到</H1>
+         <H1>Happy and Smile</H1>
     </div>
     <form class="myForm" method="post">
         <div class="form-group form-floating">
@@ -31,11 +31,24 @@
         <div class="form-group form-floating">
             <input class="form-control input-lg" type="text" name="participant" id="participant"
                     placeholder="*名字 中文/英文"/>
-            <label for="participant">名字 中文/英文</label>
+            <label for="participant">*名字 中文/英文</label>
         </div>
         <br>
+        <div class="form-group form-floating">
+            <input class="form-control input-lg" type="text" name="price" id="price"
+                    placeholder="*金額"/>
+            <label for="price">金額</label>
+        </div>
+        <br>
+        <div class="form-group form-floating">
+            <input class="form-control input-lg" type="text" name="remark" id="remark"
+                    placeholder="*祝福的話"/>
+            <label for="remark">想對我們說</label>
+        </div>
+        <br>
+
         <div class="form-group text-center">
-            <input type="submit" name="submit" class="btn btn-success btn-lg" value="簽到"/>
+            <input type="submit" name="submit" class="btn btn-success btn-lg" value="送出"/>
         </div>
     </form>
 </div>
