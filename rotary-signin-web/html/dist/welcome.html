@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Rotary Sign-in</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js-bootstrap-css/0.1/typeaheadjs.min.css"/>
+</head>
+<body>
+<div class="container" >
+    <div class="text-center" style="border-width:3px;border-bottom-style:dashed;border-color:#363635;padding:5px;">
+        <img src="static/img/logo.png" class="rounded" alt="logo">
+         <H1>簽到完成</H1>
+         <h3>熱烈歡迎[社團名稱]-[職稱]-[名字]</h3>
+         <br>
+         <br>
+         <br>
+    </div>
+    <br>
+    <form class="myForm" method="post">
+        <div class="form-group text-center">
+            <input type="submit" name="submit" class="btn btn-success btn-lg" value="Happy & Smile 歡喜表"/>
+        </div>
+        <div class="text-center" >
+            <img src="static/img/EDM.jpg" class="rounded" alt="logo" width=300>
+         </div>
+    </form>
+</div>
+    
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ClientJS/0.1.11/client.min.js"></script>
+<script>
+    var client = new ClientJS(); // Create A New Client Object
+
+    var userAgent = client.getUserAgent(); // Get User Agent String
+
+    console.log(userAgent);
+
+    var fingerprint = client.getFingerprint(); // Get Client's Fingerprint
+
+    console.log(fingerprint);
+
+    $('#club').typeahead({
+        source: function (query, process) {
+            return $.get('/prod-api/v1/participants/club/' + $('#club').val(), function (res) {
+                return process(res.data);
+            });
+        }
+    });
+</script>
+</html>
