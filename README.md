@@ -42,4 +42,3 @@
 
 * 先下載檔案[go-wsl2-host](https://github.com/shayne/go-wsl2-host)
 * 到他的relese版本下載
-* 放置C
