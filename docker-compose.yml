@@ -2,7 +2,7 @@ version: '3.8'
 services:
   rotary-mysql:
     container_name: rotary-mysql
-    image: docker.pkg.github.com/silmoontravis/rotarysyssignin/db:0.0.12
+    image: docker.pkg.github.com/silmoontravis/rotarysyssignin/db:0.0.13
     ports:
       - "3306:3306"
     networks:
@@ -23,7 +23,7 @@ services:
 
   rotary-signin-service:
     container_name: rotary-signin-service
-    image: docker.pkg.github.com/silmoontravis/rotarysyssignin/service:0.0.12
+    image: docker.pkg.github.com/silmoontravis/rotarysyssignin/service:0.0.13
     ports:
       - "8080:8080"
     networks:
@@ -43,7 +43,7 @@ services:
 
   rotary-signin-web:
     container_name: rotary-signin-web
-    image: docker.pkg.github.com/silmoontravis/rotarysyssignin/web:0.0.12
+    image: docker.pkg.github.com/silmoontravis/rotarysyssignin/web:0.0.13
     ports:
       - "80:80"
     networks:
