@@ -10,7 +10,11 @@ import com.smd.rotary.domain.signin.service.RsHappyAndSmileService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -27,8 +31,8 @@ public class HappyAndSmileController {
 
     @ApiOperation("新增參與人")
     @PostMapping("/")
-    public ApiResult<RsHappyAndSmileDto> addParticipant(@Valid RsHappyAndSmileDto HappyAndSmileDto) {
-        RsHappyAndSmile participant = RsHappyAndSmileMapper.convertDao(HappyAndSmileDto);
+    public ApiResult<RsHappyAndSmileDto> addParticipant(@Valid RsHappyAndSmileDto happyAndSmileDto) {
+        RsHappyAndSmile participant = RsHappyAndSmileMapper.convertDao(happyAndSmileDto);
         rsHappyAndSmileService.insertOne(participant);
         return new ApiResult(StatusCode.SUCCESS, RsHappyAndSmileMapper.convertDto(rsHappyAndSmileService.getOne(participant)));
     }
