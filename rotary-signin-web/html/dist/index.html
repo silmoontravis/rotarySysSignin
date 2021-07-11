@@ -12,26 +12,32 @@
 <div class="container">
     <div class="text-center">
         <img src="static/img/logo.png" class="rounded" alt="logo">
-         <H1>台北環河扶輪社-例會簽到</H1>
+        <H1>台北環河扶輪社-例會簽到</H1>
     </div>
-    <form class="myForm" method="post">
+    <form id="addParticipant" class="myForm needs-validation" novalidate>
         <div class="form-group form-floating">
             <input class="form-control input-lg typeahead" type="text" name="club" id="club" data-provide="typeahead"
-                    autocomplete="off"
-                    placeholder="*社團名稱 (若沒有請填寫無)"/>
+                   autocomplete="off"
+                   placeholder="*社團名稱 (若沒有請填寫無)"
+                   required/>
             <label for="club">*社團名稱 (若沒有請填寫無)</label>
+            <div class="invalid-feedback">請輸入所需資料</div>
         </div>
         <br>
         <div class="form-group form-floating">
             <input class="form-control input-lg" type="text" name="title" id="title"
-                    placeholder="*社團職稱 (若沒有請填寫來賓)"/>
+                   placeholder="*社團職稱 (若沒有請填寫來賓)"
+                   required/>
             <label for="title">*社團職稱 (若沒有請填寫來賓)</label>
+            <div class="invalid-feedback">請輸入所需資料</div>
         </div>
         <br>
         <div class="form-group form-floating">
             <input class="form-control input-lg" type="text" name="participant" id="participant"
-                    placeholder="*名字 中文/英文"/>
+                   placeholder="*名字 中文/英文"
+                   required/>
             <label for="participant">名字 中文/英文</label>
+            <div class="invalid-feedback">請輸入所需資料</div>
         </div>
         <br>
         <div class="form-group text-center">
@@ -39,7 +45,7 @@
         </div>
     </form>
 </div>
-    
+
 </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -47,15 +53,52 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ClientJS/0.1.11/client.min.js"></script>
 <script>
-    var client = new ClientJS(); // Create A New Client Object
+    (function () {
+        'use strict'
+        let forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
 
-    var userAgent = client.getUserAgent(); // Get User Agent String
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
 
-    console.log(userAgent);
-
-    var fingerprint = client.getFingerprint(); // Get Client's Fingerprint
-
-    console.log(fingerprint);
+    $('#addParticipant').submit(function () {
+        let form = $('#addParticipant');
+        if (!form[0].checkValidity()) {
+            return false;
+        }
+        let participant = $('#participant').val();
+        let title = $('#title').val();
+        let club = $('#club').val();
+        let client = new ClientJS(); // Create A New Client Object
+        let userAgent = client.getUserAgent(); // Get User Agent String
+        let fingerprint = client.getFingerprint(); // Get Client's Fingerprint
+        title = title.trim() === '' ? '來賓' : title;
+        club = club.trim() === '' ? '無' : club;
+        $.post('/prod-api/v1/participants/',
+            {
+                participant: participant,
+                title: title,
+                club: club,
+                device: userAgent,
+                fingerprint: fingerprint
+            },
+            function (res) {
+                if (res.status !== 200) alert(res.data);
+                window.location.pathname = 'welcome';
+            }
+        ).fail(function () {
+            alert('服務異常');
+        });
+        return false;
+    });
 
     $('#club').typeahead({
         source: function (query, process) {
@@ -64,5 +107,6 @@
             });
         }
     });
+
 </script>
 </html>
