@@ -11,7 +11,13 @@
     <div class="text-center" style="border-width:3px;border-bottom-style:dashed;border-color:#363635;padding:5px;">
         <img src="static/img/logo.png" class="rounded" alt="logo">
         <H1>簽到完成</H1>
-        <h3>熱烈歡迎[社團名稱]-[職稱]-[名字]</h3>
+        <h3>熱烈歡迎
+            <div id="club"></div>
+            -
+            <div id="title"></div>
+            -
+            <div id="participant"></div>
+        </h3>
         <br>
         <br>
         <br>
@@ -30,4 +36,21 @@
 </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
+<script type="module">
+    import Cookies from '/path/to/js.cookie.mjs'
+
+    function setCookie(key, value) {
+        Cookies.set(key, value)
+    }
+
+    function getCookie(key) {
+        Cookies.get(key)
+    }
+</script>
+<script>
+    $('#participant').text(getCookie('participant'));
+    $('#title').text(getCookie('title'));
+    $('#club').text(getCookie('club'));
+</script>
 </html>

@@ -52,6 +52,18 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ClientJS/0.1.11/client.min.js"></script>
+<script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
+<script type="module">
+    import Cookies from '/path/to/js.cookie.mjs'
+
+    function setCookie(key, value) {
+        Cookies.set(key, value)
+    }
+
+    function getCookie(key) {
+        Cookies.get(key)
+    }
+</script>
 <script>
     (function () {
         'use strict'
@@ -91,6 +103,9 @@
                 fingerprint: fingerprint
             },
             function (res) {
+                setCookie('participant', participant);
+                setCookie('title', title);
+                setCookie('club', club);
                 if (res.status !== 200) alert(res.data);
                 window.location.pathname = 'welcome';
             }
