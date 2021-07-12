@@ -42,7 +42,7 @@
         <br>
         <div class="form-group form-floating">
             <input class="form-control input-lg" type="text" name="price" id="price"
-                   placeholder="*金額"
+                   placeholder="*金額" onkeyup="value=value.replace(/[^\d]/g,'') "
                    required/>
             <label for="price">金額</label>
             <div class="invalid-feedback">請輸入所需資料</div>
