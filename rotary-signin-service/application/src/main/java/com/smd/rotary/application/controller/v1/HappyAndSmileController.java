@@ -29,7 +29,7 @@ public class HappyAndSmileController {
     @Autowired
     private RsHappyAndSmileService rsHappyAndSmileService;
 
-    @ApiOperation("新增參與人")
+    @ApiOperation("新增歡喜單")
     @PostMapping("/")
     public ApiResult<RsHappyAndSmileDto> addParticipant(@Valid RsHappyAndSmileDto happyAndSmileDto) {
         RsHappyAndSmile participant = RsHappyAndSmileMapper.convertDao(happyAndSmileDto);
@@ -37,7 +37,7 @@ public class HappyAndSmileController {
         return new ApiResult(StatusCode.SUCCESS, RsHappyAndSmileMapper.convertDto(rsHappyAndSmileService.getOne(participant)));
     }
 
-    @ApiOperation("查詢某時間段參與人列表")
+    @ApiOperation("查詢某時間段歡喜單列表")
     @GetMapping("/")
     public ApiResult<List<RsHappyAndSmileDto>> getParticipantByDateTime(@Valid DateTimeRangeRequest dateTimeRangeRequest) {
         return new ApiResult(StatusCode.SUCCESS, rsHappyAndSmileService.gethappyAndSmileByDateTime(dateTimeRangeRequest).stream().map(RsHappyAndSmileMapper::convertDto).collect(Collectors.toList()));
