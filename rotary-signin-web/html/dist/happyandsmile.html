@@ -114,9 +114,9 @@
         return "";
     }
 
-    $('#participant').text(getCookie('participant'));
-    $('#title').text(getCookie('title'));
-    $('#club').text(getCookie('club'));
+    $('#participant').val(getCookie('participant'));
+    $('#title').val(getCookie('title'));
+    $('#club').val(getCookie('club'));
 
 
     (function () {
@@ -157,6 +157,10 @@
         }
         return "";
     }
+
+    $('#participant').text(getCookie('participant'));
+    $('#title').text(getCookie('title'));
+    $('#club').text(getCookie('club'));
 
     $('#addHappyAndSmile').submit(function () {
         let form = $('#addHappyAndSmile');

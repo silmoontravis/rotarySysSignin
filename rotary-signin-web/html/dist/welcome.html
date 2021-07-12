@@ -13,21 +13,19 @@
     <div class="text-center" style="border-width:3px;border-bottom-style:dashed;border-color:#363635;padding:5px;">
         <img src="static/img/logo.png" class="rounded" alt="logo">
         <H1>簽到完成</H1>
-        <h3>熱烈歡迎></h3>
+        <h3>熱烈歡迎</h3>
         <h3><label id="club"></label>-<label id="title"></label>-<label id="participant"></label></h3>
         <br>
         <br>
         <br>
     </div>
     <br>
-    <form id="goHappyAndSmile" class="myForm needs-validation" novalidate>
-        <div class="form-group text-center">
-            <input type="submit" name="submit" class="btn btn-success btn-lg" value="我要填寫 Happy And Smile 歡喜單"/>
-        </div>
-        <div class="text-center">
-            <img src="static/img/EDM.jpg" class="rounded" alt="logo" width=300>
-        </div>
-    </form>
+    <div class="form-group text-center">
+        <input type="button" name="submit" class="btn btn-success btn-lg" value="我要填寫 Happy And Smile 歡喜單" onclick="goHappyAndSmile();"/>
+    </div>
+    <div class="text-center">
+        <img src="static/img/EDM.jpg" class="rounded" alt="logo" width=300>
+    </div>
 </div>
 
 </div>
@@ -65,13 +63,13 @@
     $('#club').text(getCookie('club'));
 
     function goHappyAndSmile() {
-        participant = getCookie('participant');
+        let participant = getCookie('participant');
         let title = getCookie('title');
         let club = getCookie('club');
         setCookie('participant', participant);
         setCookie('title', title);
         setCookie('club', club);
-        window.location.href = 'happyandsmile.html';
+        window.location.pathname = 'happyandsmile';
     }
 </script>
 </html>
