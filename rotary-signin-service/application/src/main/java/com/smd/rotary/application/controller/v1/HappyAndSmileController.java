@@ -20,7 +20,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Api(value = "API for HappyAndSmile", tags = "參與人")
+@Api(value = "API for HappyAndSmile", tags = "歡喜單")
 @RequestMapping("/v1/HappyAndSmile")
 @RestController
 // @CrossOrigin(allowCredentials = "true")

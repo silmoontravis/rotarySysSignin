@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>簽到表</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js-bootstrap-css/0.1/typeaheadjs.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap-table.css">
+</head>
+<body>
+<div class="container">
+    <div class="form-group">
+        <H1>台北環河扶輪社-例會簽到表</H1>
+    </div>
+    <form id="getList" class="myForm needs-validation" novalidate>
+        <div class="col-auto">
+            <label for="club">*時間起</label>
+            <input class="form-control" type="text" name="beginAt" id="beginAt" required/>
+            <div class="invalid-feedback">請輸入所需資料</div>
+
+            <label for="title">*時間止</label>
+            <input class="form-control" type="text" name="endAt" id="endAt" required/>
+            <div class="invalid-feedback">請輸入所需資料</div>
+            <br>
+            <input type="submit" name="submit" class="btn btn-success btn-lg" value="查詢"/>
+            <input type="button" name="reportExcel" class="btn btn-success btn-lg" value="導出Excel"/>
+        </div>
+    </form>
+    <br>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">社團</th>
+            <th scope="col">職稱</th>
+            <th scope="col">名字(中文/英文)</th>
+            <th scope="col">簽到時間</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-info">
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            <td>yyyy-MM-dd 24H:mm:ss</td>
+          </tr>
+          <tr class="table-light">
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>yyyy-MM-dd 24H:mm:ss</td>
+          </tr>
+          <tr class="table-info">
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+            <td>yyyy-MM-dd 24H:mm:ss</td>
+          </tr>
+          <tr class="table-light">
+            <th scope="row">4</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            <td>yyyy-MM-dd 24H:mm:ss</td>
+          </tr>
+          <tr class="table-info">
+            <th scope="row">5</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+            <td>yyyy-MM-dd 24H:mm:ss</td>
+          </tr>
+          <tr class="table-light">
+            <th scope="row">6</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+            <td>yyyy-MM-dd 24H:mm:ss</td>
+          </tr>
+          <tr class="table-info">
+            <th scope="row">7</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+            <td>yyyy-MM-dd 24H:mm:ss</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table class="form-group text-center">
+        <H1><label>Happy And Smile</label></H1>
+          <tr>
+              <td>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">環河社 CP 張興維SAM</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Happy And Smile 5000</h6>
+                      <p class="card-text">祝福首敲圓滿成功</p>
+                    </div>
+                  </div>
+              </td>
+              <td>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">環河社 CP 張興維SAM</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Happy And Smile 5000</h6>
+                      <p class="card-text">祝福首敲圓滿成功</p>
+                    </div>
+                  </div>
+              </td>
+              <td>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">環河社 CP 張興維SAM</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Happy And Smile 5000</h6>
+                      <p class="card-text">祝福首敲圓滿成功</p>
+                    </div>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+                <td>
+                  <div class="card" style="width: 18rem;">
+                      <div class="card-body">
+                        <h5 class="card-title">環河社 CP 張興維SAM</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Happy And Smile 5000</h6>
+                        <p class="card-text">祝福首敲圓滿成功</p>
+                      </div>
+                    </div>
+                </td>
+                <td>
+                  <div class="card" style="width: 18rem;">
+                      <div class="card-body">
+                        <h5 class="card-title">環河社 CP 張興維SAM</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Happy And Smile 5000</h6>
+                        <p class="card-text">祝福首敲圓滿成功</p>
+                      </div>
+                    </div>
+                </td>
+                <td>
+                  <div class="card" style="width: 18rem;">
+                      <div class="card-body">
+                        <h5 class="card-title">環河社 CP 張興維SAM</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Happy And Smile 5000</h6>
+                        <p class="card-text">祝福首敲圓滿成功</p>
+                      </div>
+                    </div>
+                </td>
+              </tr>
+      </table>
+      
+      
+
+</div>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ClientJS/0.1.11/client.min.js"></script>
+</html>
