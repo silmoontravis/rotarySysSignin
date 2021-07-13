@@ -67,67 +67,8 @@
         </thead>
     </table>
     <br>
-    <table class="form-group text-center">
-        <H1><label>Happy And Smile</label></H1>
-        <tr>
-            <td>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">環河社 CP 張興維SAM</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Happy And Smile 5000</h6>
-                        <p class="card-text">祝福首敲圓滿成功</p>
-                    </div>
-                </div>
-            </td>
-            <td>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">環河社 CP 張興維SAM</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Happy And Smile 5000</h6>
-                        <p class="card-text">祝福首敲圓滿成功</p>
-                    </div>
-                </div>
-            </td>
-            <td>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">環河社 CP 張興維SAM</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Happy And Smile 5000</h6>
-                        <p class="card-text">祝福首敲圓滿成功</p>
-                    </div>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">環河社 CP 張興維SAM</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Happy And Smile 5000</h6>
-                        <p class="card-text">祝福首敲圓滿成功</p>
-                    </div>
-                </div>
-            </td>
-            <td>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">環河社 CP 張興維SAM</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Happy And Smile 5000</h6>
-                        <p class="card-text">祝福首敲圓滿成功</p>
-                    </div>
-                </div>
-            </td>
-            <td>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">環河社 CP 張興維SAM</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Happy And Smile 5000</h6>
-                        <p class="card-text">祝福首敲圓滿成功</p>
-                    </div>
-                </div>
-            </td>
-        </tr>
-    </table>
+    <H1><label>Happy And Smile</label></H1>
+    <table id="happyAndSmile" class="form-group text-center"></table>
 </div>
 
 </body>
@@ -210,6 +151,36 @@
             });
         }).draw();
     }
+
+    function printHappyAndSmile() {
+        let tableHtml = '';
+        $.get('/prod-api/v1/happy-and-smile/', function(res){
+            if (res.status === 200 && res.data.length > 0) {
+                res.data.forEach(function(item, idx) {
+                    if (idx % 3 === 0) {
+                        tableHtml += '<tr>';
+                    }
+                    tableHtml += genHappyAndSmile(item);
+                    if (idx % 3 === 2) {
+                        tableHtml += '</tr>';
+                    }
+                });
+            }
+            $('#happyAndSmile').html(tableHtml);
+        });
+    }
+    function genHappyAndSmile(happyAndSmile) {
+        return '<td>\n' +
+            '                <div class="card" style="width: 18rem;">\n' +
+            '                    <div class="card-body">\n' +
+            '                        <h5 class="card-title">' + happyAndSmile.club + ' ' + happyAndSmile.title + ' ' + happyAndSmile.participant + ' ' + '</h5>\n' +
+            '                        <h6 class="card-subtitle mb-2 text-muted">Happy And Smile ' + happyAndSmile.price + '</h6>\n' +
+            '                        <p class="card-text">' + happyAndSmile.remark + '</p>\n' +
+            '                    </div>\n' +
+            '                </div>\n' +
+            '            </td>';
+    }
     searchTable();
+    printHappyAndSmile();
 </script>
 </html>

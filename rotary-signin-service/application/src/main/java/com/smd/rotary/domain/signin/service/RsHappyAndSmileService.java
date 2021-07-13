@@ -29,7 +29,11 @@ public class RsHappyAndSmileService {
         rsHappyAndSmileMapper.insert(happyAndSmile);
     }
 
-    public List<RsHappyAndSmile> gethappyAndSmileByDateTime(DateTimeRangeRequest dateTimeRangeRequest) {
+    public List<RsHappyAndSmile> getAll() {
+        return rsHappyAndSmileMapper.selectList(Wrappers.lambdaQuery());
+    }
+
+    public List<RsHappyAndSmile> getHappyAndSmileByDateTime(DateTimeRangeRequest dateTimeRangeRequest) {
         LambdaQueryWrapper<RsHappyAndSmile> queryWrapper = Wrappers.lambdaQuery();
         queryWrapper.between(RsHappyAndSmile::getSignAt, DateConvertUtil.convertDateFixTimeZoneSearch(dateTimeRangeRequest.getBeginAt()), DateConvertUtil.convertDateFixTimeZoneSearch(dateTimeRangeRequest.getEndAt()));
         return rsHappyAndSmileMapper.selectList(queryWrapper);
