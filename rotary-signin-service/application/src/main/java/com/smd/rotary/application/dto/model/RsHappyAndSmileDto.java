@@ -14,7 +14,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 
-@ApiModel("參與人登記表 DTO")
+@ApiModel("歡喜單 DTO")
 @ToString
 @Data
 @NoArgsConstructor

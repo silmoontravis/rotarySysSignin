@@ -181,7 +181,7 @@
         let fingerprint = client.getFingerprint(); // Get Client's Fingerprint
         title = title.trim() === '' ? '來賓' : title;
         club = club.trim() === '' ? '無' : club;
-        $.post('/prod-api/v1/HappyAndSmile/',
+        $.post('/prod-api/v1/happy-and-smile/',
             {
                 participant: participant,
                 title: title,
