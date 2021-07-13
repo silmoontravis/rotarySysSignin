@@ -5,6 +5,7 @@
 ## 版本號v1
 
 * 簽到功能
+* Happy And Smile 功能
 * 查詢簽到記錄
 
 ## 運行需求 & 指令
@@ -37,6 +38,9 @@
 * 執行 docker-compose -f develop-compose.yml up --build -d
 * 關閉指令為 docker-compose -f develop-compose.yml down
 * 如需完全清除, 指令為 docker-compose -f develop-compose.yml down -v
+
+## Docker 異常報錯處理
+* max depth exceeded 鍵入 docker system prune -a
 
 ## Docker WSL IP 自動抓取小工具
 
