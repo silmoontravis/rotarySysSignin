@@ -95,6 +95,7 @@
 
     $('#search').click(function() {
         searchTable();
+        printHappyAndSmile();
     });
 
     function searchTable() {
@@ -169,6 +170,7 @@
             $('#happyAndSmile').html(tableHtml);
         });
     }
+
     function genHappyAndSmile(happyAndSmile) {
         return '<td>\n' +
             '                <div class="card" style="width: 18rem;">\n' +
@@ -180,7 +182,7 @@
             '                </div>\n' +
             '            </td>';
     }
-    searchTable();
-    printHappyAndSmile();
+
+    $('#search').click();
 </script>
 </html>
