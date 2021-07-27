@@ -155,12 +155,7 @@
 
     function printHappyAndSmile() {
         let tableHtml = '';
-        $.get('/prod-api/v1/happy-and-smile/',
-            {
-                beginAt: moment($('#beginAt').val(), 'YYYY/MM/DD H:mm').toISOString(),
-                endAt: moment($('#endAt').val(), 'YYYY/MM/DD H:mm').toISOString()
-            }
-        ,function(res){
+        $.get('/prod-api/v1/happy-and-smile/', function(res){
             if (res.status === 200 && res.data.length > 0) {
                 res.data.forEach(function(item, idx) {
                     if (idx % 3 === 0) {
