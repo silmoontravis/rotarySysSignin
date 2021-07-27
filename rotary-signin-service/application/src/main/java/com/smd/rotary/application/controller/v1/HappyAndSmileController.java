@@ -39,8 +39,8 @@ public class HappyAndSmileController {
 
     @ApiOperation("查詢歡喜單列表")
     @GetMapping("/")
-    public ApiResult<List<RsHappyAndSmileDto>> getHappyAndSmile() {
-        return new ApiResult(StatusCode.SUCCESS, rsHappyAndSmileService.getAll().stream().map(RsHappyAndSmileMapper::convertDto).collect(Collectors.toList()));
+    public ApiResult<List<RsHappyAndSmileDto>> getHappyAndSmile(@Valid DateTimeRangeRequest dateTimeRangeRequest) {
+        return new ApiResult(StatusCode.SUCCESS, rsHappyAndSmileService.getHappyAndSmileByDateTime(dateTimeRangeRequest).stream().map(RsHappyAndSmileMapper::convertDto).collect(Collectors.toList()));
     }
 
     @ApiOperation("獲取社團列表")
