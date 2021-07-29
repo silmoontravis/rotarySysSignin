@@ -1,5 +1,6 @@
 package com.smd.rotary.application.controller.v1;
 
+import com.smd.rotary.application.controller.v1.request.DateTimeRangeRequest;
 import com.smd.rotary.application.dto.mapper.RsHappyAndSmileMapper;
 import com.smd.rotary.application.dto.model.RsHappyAndSmileDto;
 import com.smd.rotary.application.dto.response.ApiResult;
@@ -38,8 +39,8 @@ public class HappyAndSmileController {
 
     @ApiOperation("查詢歡喜單列表")
     @GetMapping("/")
-    public ApiResult<List<RsHappyAndSmileDto>> getHappyAndSmile() {
-        return new ApiResult(StatusCode.SUCCESS, rsHappyAndSmileService.getAll().stream().map(RsHappyAndSmileMapper::convertDto).collect(Collectors.toList()));
+    public ApiResult<List<RsHappyAndSmileDto>> getHappyAndSmile(@Valid DateTimeRangeRequest dateTimeRangeRequest) {
+        return new ApiResult(StatusCode.SUCCESS, rsHappyAndSmileService.getHappyAndSmileByDateTime(dateTimeRangeRequest).stream().map(RsHappyAndSmileMapper::convertDto).collect(Collectors.toList()));
     }
 
     @ApiOperation("獲取社團列表")
