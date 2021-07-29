@@ -1,6 +1,7 @@
 FROM        adoptopenjdk/openjdk11:alpine-jre
 LABEL       app=smd-rotary
 ENV         TZ=Asia/Taipei
+COPY        /usr/share/zoneinfo/    /usr/share/zoneinfo/
 RUN         ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN         addgroup --system app && adduser --system --no-create-home --ingroup app app
 RUN         apk add bash
